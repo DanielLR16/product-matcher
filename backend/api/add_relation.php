@@ -16,21 +16,22 @@ if (!$product_a || !$product_b) {
 }
 
 try {
-    // Compruebo duplicados
-    $check = $pdo->prepare("SELECT 1 FROM product_relations WHERE product_a = ? AND product_b = ?");
-    $check->execute([$product_a, $product_b]);
-
-    if ($check->fetch()) {
-        http_response_code(409);
-        echo json_encode(['success' => false, 'error' => 'Relation already exists']);
-        exit;
-    }
-    // Inserto si no esta duplicado
     $stmt = $pdo->prepare("INSERT INTO product_relations (product_a, product_b) VALUES (?, ?)");
     $stmt->execute([$product_a, $product_b]);
     echo json_encode(['success' => true]);
 } catch (PDOException $e) {
-    http_response_code(500);
-    echo json_encode(['success' => false, 'error' => 'Error en el servidor']);
+    if ($e->getCode() == 23000) { 
+        http_response_code(409); 
+        echo json_encode([
+            'success' => false,
+            'error' => 'La relación ya existe'
+        ]);
+    } else {
+        http_response_code(500);
+        echo json_encode([
+            'success' => false,
+            'error' => 'Error en el servidor'
+        ]);
+    }
 }
 ?>

@@ -74,7 +74,7 @@ export default function AddProductForm() {
 
   return (
     <form
-      className="flex flex-col items-start p-4 pb-10 gap-6 w-full max-w-[1319px] h-[350px] bg-white shadow-md rounded-lg"
+      className="flex flex-col items-start p-4 pb-10 gap-6 w-full bg-white shadow-md rounded-lg"
       onSubmit={handleSubmit}
     >
     {/* Header del formulario */}
