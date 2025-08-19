@@ -20,7 +20,18 @@ try {
     $stmt->execute([$client_id, $product_name]);
     echo json_encode(['success' => true, 'id' => $pdo->lastInsertId()]);
 } catch (PDOException $e) {
-    http_response_code(500);
-    echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+if ($e->getCode() == 23000) { 
+        http_response_code(409); 
+        echo json_encode([
+            'success' => false,
+            'error' => 'El producto ya existe para este cliente'
+        ]);
+    } else {
+        http_response_code(500);
+        echo json_encode([
+            'success' => false,
+            'error' => 'Error en el servidor'
+        ]);
+    }
 }
 ?>
