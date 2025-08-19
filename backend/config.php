@@ -29,9 +29,12 @@ $options = [
 
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
-    //echo "✅ Conexión exitosa con PDO";
 } catch (\PDOException $e) {
-    echo "❌ Error de conexión: " . $e->getMessage();
+    http_response_code(500); 
+    echo json_encode([
+        "success" => false,
+        "message" => "Error de conexión: " . $e->getMessage()
+    ]);
 }
 ?>
 
