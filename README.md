@@ -3,11 +3,13 @@
 Este repositorio contiene la prueba técnica desarrollada para el puesto de **Full Stack Engineer** en Minderest. El proyecto consiste en una aplicación web completa con frontend en **React + TailwindCSS** y backend en **PHP**, conectada a una base de datos **MySQL**.  
 
 ## Estructura del proyecto
+```text
 .
-├── Documentación_de_LLMM.pdf     # Documentación con preguntas realizadas a la IA
-├── productos_online_init.sql     # Script para crear la base de datos e iniciar con 10 clientes
-├── backend/                      # Carpeta con la API en PHP
-└── frontend/                     # Carpeta con la aplicación en React + TailwindCSS
+├── Documentación_de_LLMM.pdf # Documentación con preguntas realizadas a la IA
+├── productos_online_init.sql # Script para crear la base de datos e iniciar con 10 clientes
+├── backend/ # Carpeta con la API en PHP
+└── frontend/ # Carpeta con la aplicación en React + TailwindCSS
+```
 
 
 ### Documentación
